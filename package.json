@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/osu-cascades/foster-community-connect-server#readme",
   "dependencies": {
+    "dotenv": "^8.0.0",
     "express": "^4.17.1"
   }
 }
