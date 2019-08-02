@@ -9,8 +9,27 @@ if (port == null || port == "") {
 const gmail_username = process.env.GMAIL_USERNAME;
 const gmail_password = process.env.GMAIL_PASSWORD;
 
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'gmail_username',
+      pass: 'gmail_password'
+    }
+  });
+  
+  var mailOptions = {
+    from: 'shaylalane522@gmail.com',
+    to: 'shaylalane522@gmail.com',
+    subject: 'Sending Email using Node.js',
+    text: 'That was easy!'
+  };
+
 app.get('/', function(req, res) {
-    res.send(gmail_password);
+    if(error) {
+        res.send("Error. Email not sent.")
+    } else {
+    res.send("Congratulations you little genius");
+    }
 });
 
 app.listen(port);
