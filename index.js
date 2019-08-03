@@ -29,9 +29,10 @@ var transporter = nodemailer.createTransport({
 app.get('/', function(req, res) {
     transporter.sendMail(mailOptions, function(error, info){
         if(error) {
-            res.send("Error. Email not sent.")
+            res.send("Error type:", error.name);
+            res.send("SMTP log:", error.data);
         } else {
-            res.send("Congratulations you little genius. Email sent:" +info.response);
+            res.send('Congratulations you little genius. Email sent:' +info.response);
         }
     });
 });
