@@ -27,11 +27,13 @@ var transporter = nodemailer.createTransport({
   };
 
 app.get('/', function(req, res) {
-    if(error) {
-        res.send("Error. Email not sent.")
-    } else {
-    res.send("Congratulations you little genius");
-    }
+    transporter.sendMail(mailOptions, function(error, info){
+        if(error) {
+            res.send("Error. Email not sent.")
+        } else {
+            res.send("Congratulations you little genius");
+        }
+    });
 });
 
 app.listen(port);
