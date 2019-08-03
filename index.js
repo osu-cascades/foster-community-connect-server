@@ -30,8 +30,8 @@ app.get('/', function(req, res) {
     transporter.sendMail(mailOptions, function(error, info){
         if(error) {
             //res.status(status).send(body);
-            res.send("Error type:", error.name);
-            res.send("SMTP log:", error.data);
+            res.send("Error type:" + error.name);
+            res.send("SMTP log:" + error.data);
         } else {
             res.send('Congratulations you little genius. Email sent:' +info.response);
         }
