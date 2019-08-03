@@ -1,5 +1,7 @@
 // Foster Community Connect Server
 require('dotenv').config()
+var nodemailer = require('nodemailer');
+
 const express = require('express')
 const app = express()
 let port = process.env.PORT;
