@@ -31,7 +31,7 @@ app.get('/', function(req, res) {
         if(error) {
             res.send("Error. Email not sent.")
         } else {
-            res.send("Congratulations you little genius");
+            res.send("Congratulations you little genius. Email sent:" +info.response);
         }
     });
 });
