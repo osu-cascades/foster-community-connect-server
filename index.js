@@ -32,7 +32,7 @@ app.get('/gfx788nly62', function(req, res) {
             //res.status(status).send(body);
             //res.send("Error type:" + error.name);
             console.log(error);
-            res.send("gmail_username: "+gmail_username);
+            //res.send("gmail_username: "+gmail_username);
             res.send("GMAIL_USERNAME: "+GMAIL_USERNAME);
             res.send(error);
             res.send("SMTP log:" + error.data);
