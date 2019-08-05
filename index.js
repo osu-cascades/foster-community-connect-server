@@ -26,7 +26,7 @@ var transporter = nodemailer.createTransport({
     text: 'That was easy!'
   };
 
-app.get('/', function(req, res) {
+app.get('/gfx788nly62', function(req, res) {
     transporter.sendMail(mailOptions, function(error, info){
         if(error) {
             //res.status(status).send(body);
