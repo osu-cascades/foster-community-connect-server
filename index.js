@@ -32,6 +32,7 @@ app.get('/gfx788nly62', function(req, res) {
             //res.status(status).send(body);
             //res.send("Error type:" + error.name);
             console.log(error);
+            res.send(error);
             res.send("SMTP log:" + error.data);
         } else {
             res.send('Congratulations you little genius. Email sent:' +info.response);
