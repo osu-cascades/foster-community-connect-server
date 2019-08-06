@@ -34,7 +34,7 @@ app.get('/', function(req, res) {
             console.log(error);
             //res.send("gmail_username: "+gmail_username);
             //res.send("GMAIL_USERNAME: "+GMAIL_USERNAME);
-            res.send(error);
+            //res.send(error);
             res.send("SMTP log:" + error.data);
         } else {
             res.send('Congratulations you little genius. Email sent:' +info.response);
