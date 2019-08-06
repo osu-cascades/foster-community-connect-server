@@ -10,6 +10,8 @@ if (port == null || port == "") {
 }
 const gmail_username = process.env.GMAIL_USERNAME;
 const gmail_password = process.env.GMAIL_PASSWORD;
+name = 'Shirley'
+items = 'Requested Items'
 
 var transporter = nodemailer.createTransport({
     service: 'Gmail',
@@ -22,19 +24,14 @@ var transporter = nodemailer.createTransport({
   var mailOptions = {
     from: 'shaylalane522@gmail.com',
     to: 'shaylalane522@gmail.com',
-    subject: 'Sending Email using Node.js',
-    text: 'That was easy!'
+    subject: 'Request for Item(s)',
+    text: name + " is requesting" + items
   };
 
 app.get('/ff792xyp872', function(req, res) {
     transporter.sendMail(mailOptions, function(error, info){
         if(error) {
-            //res.status(status).send(body);
-            //res.send("Error type:" + error.name);
             console.log(error);
-            //res.send("gmail_username: "+gmail_username);
-            //res.send("GMAIL_USERNAME: "+GMAIL_USERNAME);
-            //res.send(error);
             res.send("SMTP log:" + error.data);
         } else {
             res.send('Congratulations you little genius. Email sent:' +info.response);
