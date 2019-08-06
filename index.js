@@ -12,6 +12,7 @@ const gmail_username = process.env.GMAIL_USERNAME;
 const gmail_password = process.env.GMAIL_PASSWORD;
 name = 'Shirley'
 items = 'Requested Items'
+sender_email = 'SenderEmail@gmail.com'
 
 var transporter = nodemailer.createTransport({
     service: 'Gmail',
