@@ -4,15 +4,16 @@ var nodemailer = require('nodemailer');
 
 const express = require('express')
 const app = express()
+var cors = require('cors');
+app.use(cors());
+
 let port = process.env.PORT;
 if (port == null || port == "") {
   port = 3000;
 }
 const gmail_username = process.env.GMAIL_USERNAME;
 const gmail_password = process.env.GMAIL_PASSWORD;
-name = 'Shirley'
-items = 'Requested Items'
-sender_email = 'SenderEmail@gmail.com'
+
 
 var transporter = nodemailer.createTransport({
     service: 'Gmail',
@@ -26,7 +27,7 @@ var transporter = nodemailer.createTransport({
     from: 'shaylalane522@gmail.com',
     to: 'shaylalane522@gmail.com',
     subject: 'Request for Item(s)',
-    text: name + " is requesting" + items
+    text: "Someone is requesting something"
   };
 
 app.get('/ff792xyp872', function(req, res) {
