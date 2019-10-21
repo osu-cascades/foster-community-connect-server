@@ -1,20 +1,19 @@
 // Foster Community Connect Server
 require('dotenv').config()
-var nodemailer = require('nodemailer');
-
+var nodemailer = require('nodemailer')
 const express = require('express')
+const cors = require('cors')
 const app = express()
-var cors = require('cors');
-app.use(cors());
 
-let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 3000;
+app.use(cors())
+
+let port = process.env.PORT
+if (port == null || port == '') {
+  port = 3000
 }
+
 const gmail_username = process.env.GMAIL_USERNAME;
 const gmail_password = process.env.GMAIL_PASSWORD;
-
-
 
 var transporter = nodemailer.createTransport({
   service: 'Gmail',
@@ -33,7 +32,7 @@ app.get('/ff792xyp872', function(req, res) {
     var emailAddress = req.query.email;
     var phone = req.query.phoneNumber;
     var items = req.query.description;
-    
+
     var mailOptions = {
       from: emailAddress,
       to: 'shaylalane522@gmail.com',
@@ -41,7 +40,7 @@ app.get('/ff792xyp872', function(req, res) {
       text: name + ' is requesting: ' + items + '\n\n' + name +"'s phone number is " + phone + '\n' + name + "'s email address is " + emailAddress
     };
 
-    
+
 
     transporter.sendMail(mailOptions, function(error, info){
         if(error) {
