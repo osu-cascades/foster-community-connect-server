@@ -12,17 +12,13 @@ if (port == null || port == '') {
   port = 3000
 }
 
-const gmail_username = process.env.GMAIL_USERNAME;
-const gmail_password = process.env.GMAIL_PASSWORD;
-
 var transporter = nodemailer.createTransport({
   service: 'Gmail',
   auth: {
-    user: gmail_username,
-    pass: gmail_password
+    user: process.env.GMAIL_USERNAME,
+    pass: process.env.GMAIL_PASSWORD
   }
-});
-
+})
 
 
 var name;
