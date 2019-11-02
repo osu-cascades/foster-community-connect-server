@@ -4,6 +4,9 @@ var nodemailer = require('nodemailer')
 const express = require('express')
 const cors = require('cors')
 const app = express()
+var api_key = process.env.MAILGUN_PUBLIC_KEY;
+var domain = 'http://cofpa-inventory-server.herokuapp.com/production';
+var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain})
 
 app.use(cors())
 
@@ -44,6 +47,15 @@ app.get(route_path, function(req, res) {
       res.send('Congratulations you little genius. Email sent:' + info.response)
     }
   })
+})
+
+mailgun.messages().send(mailOptions, function (error, info) {
+  if (error) {
+    console.log(error)
+    res.send("SMTP log:" + error.data)
+  } else {
+    res.send('Congratulations you little genius. Email sent:' + info.response)
+  }
 })
 
 app.listen(port)
