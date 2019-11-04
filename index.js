@@ -1,13 +1,12 @@
 // Foster Community Connect Server
 require('dotenv').config()
-var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain})
 var nodemailer = require('nodemailer')
 const express = require('express')
 const cors = require('cors')
 const app = express()
-//should I not have this hardcoded? something like process.env
 var api_key = process.env.MAILGUN_API_KEY;
-var domain = 'http://cofpa-inventory-server.herokuapp.com/production'
+var domain = process.env.MAILGUN_DOMAIN
+var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain})
 
 app.use(cors())
 
@@ -26,6 +25,26 @@ var transporter = nodemailer.createTransport({
 
 const route_path = process.env.ROUTE_PATH
 const recipient_email_address = process.env.RECIPIENT_EMAIL_ADDRESS
+
+//mailgun version of transporter
+app.get('/mailgun', function(req, res) {
+  var mailOptions = {
+    from: 'example@example.com',
+    to: 'shaylalane522@gmail.com',
+    subject: 'TEST',
+    text: 'TESTOLA'
+  }
+
+  mailgun.messages().send(mailOptions, function (error, body) {
+    if (error) {
+      console.log(error)
+      res.send("SMTP log:" + error.data)
+    } else {
+      res.send('Congratulations you little genius. Email sent:' + body)
+    }
+  })
+})
+
 
 app.get(route_path, function(req, res) {
   var name = req.query.firstName + ' ' + req.query.lastName
@@ -49,14 +68,6 @@ app.get(route_path, function(req, res) {
     }
   })
 })
-//mailgun version of transporter
-mailgun.messages().send(mailOptions, function (error, info) {
-  if (error) {
-    console.log(error)
-    res.send("SMTP log:" + error.data)
-  } else {
-    res.send('Congratulations you little genius. Email sent:' + info.response)
-  }
-})
+
 
 app.listen(port)
