@@ -1,12 +1,13 @@
 // Foster Community Connect Server
 require('dotenv').config()
+var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain})
 var nodemailer = require('nodemailer')
 const express = require('express')
 const cors = require('cors')
 const app = express()
-var api_key = process.env.MAILGUN_PUBLIC_KEY;
-var domain = 'http://cofpa-inventory-server.herokuapp.com/production';
-var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain})
+//should I not have this hardcoded? something like process.env
+var api_key = process.env.MAILGUN_API_KEY;
+var domain = 'http://cofpa-inventory-server.herokuapp.com/production'
 
 app.use(cors())
 
@@ -48,7 +49,7 @@ app.get(route_path, function(req, res) {
     }
   })
 })
-
+//mailgun version of transporter
 mailgun.messages().send(mailOptions, function (error, info) {
   if (error) {
     console.log(error)
