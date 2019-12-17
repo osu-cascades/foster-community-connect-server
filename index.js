@@ -26,6 +26,8 @@ var transporter = nodemailer.createTransport({
   }
 })
 
+// https://cofpa-inventory-server.herokuapp.com/mailgun?firstName=John&lastName=Smith&email=junk@humanoriented.com&phone=2&description=food
+
 //mailgun version of transporter
 app.get('/mailgun', function(req, res) {
   var name = req.query.firstName + ' ' + req.query.lastName
@@ -36,14 +38,14 @@ app.get('/mailgun', function(req, res) {
   var mailOptions = {
     from: emailAddress,
     to: recipient_email_address,
-    subject: 'Request from ' + name,
-    text: name + ' is requesting: ' + items + '\n\n' + name +"'s phone number is " + phone + '\n' + name + "'s email address is " + emailAddress
+    subject: action +  ' from ' + name,
+    text: name + ' is ' + action + 'ing: '  + items + '\n\n' + name +"'s phone number is " + phone + '\n' + name + "'s email address is " + emailAddress
   }
 
   mailgun.messages().send(mailOptions, function (error, body) {
     if (error) {
       console.log(error)
-      res.send("SMTP log:" + error.data)
+      res.send("SMTP log:" + error)
     } else {
       res.send('Congratulations you little genius. Email sent:' + body)
     }
@@ -56,12 +58,13 @@ app.get('/mailgun', function(req, res) {
 //   var emailAddress = req.query.email
 //   var phone = req.query.phoneNumber
 //   var items = req.query.description
+//   var action = req.query.form_type
 
 //   var mailOptions = {
 //     from: emailAddress,
 //     to: recipient_email_address,
-//     subject: 'Request from ' + name,
-//     text: name + ' is requesting: ' + items + '\n\n' + name +"'s phone number is " + phone + '\n' + name + "'s email address is " + emailAddress
+//     subject: action +  'from ' + name,
+//     text: name + ' is ' + action + 'ing: '  + items + '\n\n' + name +"'s phone number is " + phone + '\n' + name + "'s email address is " + emailAddress
 //   }
 
 //   transporter.sendMail(mailOptions, function(error, info) {
