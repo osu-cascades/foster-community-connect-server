@@ -34,6 +34,7 @@ app.get('/mailgun', function(req, res) {
   var emailAddress = req.query.email
   var phone = req.query.phoneNumber
   var items = req.query.description
+  var action = req.query.form_type
 
   var mailOptions = {
     from: emailAddress,
