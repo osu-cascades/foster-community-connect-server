@@ -1,0 +1,38 @@
+<body ng-app="myApp" id="home">  
+    <main role="main" class="container">
+          <div class="starter-template">
+            <h1>Foster. Community. Connect.</h1>
+            <p class="lead">Bridging the gap between central oregon and it's children in foster care.
+            </p>
+            <h3>Request Form</h3>
+          </div>
+        <form id="request-form" method="POST" action="/request">
+          <!-- should this action="/request" be "/getfrom"? -->
+          <div class="row">
+            <div class="col">First Name
+              <input type="text" class="form-control" id="first_name" placeholder="First name">
+            </div>
+            <div class="col">Last Name
+              <input type="text" class="form-control" id="last_name" placeholder="Last name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="sender_email">Email address</label>
+            <input type="email" class="form-control" id="sender_email" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted"></small>
+          </div>
+          <div class="form-group">
+            <label for="phone_number">Phone Number</label>
+            <input type="text" class="form-control" id="phone_number" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted"></small>
+          </div>
+          <div class="form-group">
+            <label for="items_requested"><h6>What item(s) are you requesting?</h6></label>
+            <textarea class="form-control" id="items__requested" input type="text" rows="10"></textarea>
+          </div>
+          <hr class="mb-4">
+          <button (click)="logText()" class="btn btn-primary btn-lg btn-block" type="button" value="submit">Submit Request</button>
+          <p><br></p>
+        </form>
+    </main><!-- /.container -->
+</body>
