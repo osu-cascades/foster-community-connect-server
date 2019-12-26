@@ -1,0 +1,26 @@
+<!-- nav -->
+<nav class="navbar navbar-expand navbar-dark bg-dark mt-0 p-3">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link text-light" routerLink="/">Home</a>
+        <a class="nav-item nav-link text-light" routerLink="/request-form">Get</a>
+        <a class="nav-item nav-link text-light" routerLink="/donation-form">Give</a>
+        <a class="nav-item nav-link text-light" routerLink="/donation-form">Donate</a>
+    </div>
+</nav>
+
+<!-- main content container -->
+<div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 offset-sm-0">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <button (click)="getPosts()">Get Posts</button> -->
+
+<!-- <div NgFor="let post of posts | async">
+    {{post | json}}
+</div> -->
