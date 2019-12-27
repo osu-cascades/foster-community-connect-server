@@ -4,6 +4,12 @@ var nodemailer = require('nodemailer')
 const express = require('express')
 const cors = require('cors')
 const app = express()
+//three new lines
+//What is compression and do I need it?
+const compression = require("compression");
+const _app_folder ='src/app';
+app.use(compression())
+
 let port = process.env.PORT
 if (port == null || port == '') {
   port = 3000
@@ -17,6 +23,12 @@ const mailgun = require('mailgun-js')({apiKey: api_key, domain: domain})
 
 app.use(cors())
 
+// Serve static files (client side stuff)
+app.server.get('*.*', express.static(_app_folder, {?:?}));
+//Serve application paths (server side stuff)
+app.all('*', function(req,res) {
+  res.status(200).sendFile('/', {root: _app_folder});
+});
 
 var transporter = nodemailer.createTransport({
   service: 'Gmail',
