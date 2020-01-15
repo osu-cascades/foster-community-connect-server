@@ -3,9 +3,7 @@ require('dotenv').config()
 var nodemailer = require('nodemailer')
 const express = require('express')
 const app = express()
-const compression = require('compression');
 const client_app_root = 'dist';
-app.use(compression())
 
 let port = process.env.PORT
 if (port == null || port == '') {
