@@ -1,6 +1,5 @@
 // Foster Community Connect Server
 require('dotenv').config()
-var nodemailer = require('nodemailer')
 const express = require('express')
 const app = express()
 const client_app_root = 'dist';
@@ -22,17 +21,6 @@ app.get('/', function(req, res) {
   res.status(200).sendFile('/', {root: client_app_root});
 });
 
-var transporter = nodemailer.createTransport({
-  service: 'Gmail',
-  auth: {
-    user: process.env.GMAIL_USERNAME,
-    pass: process.env.GMAIL_PASSWORD
-  }
-})
-
-// https://cofpa-inventory-server.herokuapp.com/mailgun?firstName=John&lastName=Smith&email=junk@humanoriented.com&phone=2&description=food
-
-//mailgun version of transporter
 app.get('/mailgun', function(req, res) {
   var name = req.query.firstName + ' ' + req.query.lastName
   var emailAddress = req.query.email
