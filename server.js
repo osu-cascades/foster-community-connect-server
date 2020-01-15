@@ -2,7 +2,6 @@
 require('dotenv').config()
 var nodemailer = require('nodemailer')
 const express = require('express')
-const cors = require('cors')
 const app = express()
 const compression = require('compression');
 const client_app_root = 'dist';
@@ -18,8 +17,6 @@ const route_path = process.env.ROUTE_PATH
 const recipient_email_address = process.env.RECIPIENT_EMAIL_ADDRESS
 
 const mailgun = require('mailgun-js')({apiKey: api_key, domain: domain})
-
-app.use(cors())
 
 // Serve static files (client side stuff)
 app.get('*.*', express.static(client_app_root));
