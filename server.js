@@ -23,8 +23,7 @@ app.use(cors())
 
 // Serve static files (client side stuff)
 app.get('*.*', express.static(client_app_root));
-//Serve application paths (server side stuff)
-app.all('*', function(req,res) {
+app.get('/', function(req, res) {
   res.status(200).sendFile('/', {root: client_app_root});
 });
 
