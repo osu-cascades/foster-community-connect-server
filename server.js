@@ -15,11 +15,7 @@ const recipient_email_address = process.env.RECIPIENT_EMAIL_ADDRESS
 
 const mailgun = require('mailgun-js')({apiKey: api_key, domain: domain})
 
-// Serve static files (client side stuff)
-app.get('*.*', express.static(client_app_root));
-app.get('/', function(req, res) {
-  res.status(200).sendFile('/', {root: client_app_root});
-});
+app.use(express.static(client_app_root));
 
 app.get('/mailgun', function(req, res) {
   var name = req.query.firstName + ' ' + req.query.lastName
