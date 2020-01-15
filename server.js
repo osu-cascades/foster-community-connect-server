@@ -4,10 +4,8 @@ var nodemailer = require('nodemailer')
 const express = require('express')
 const cors = require('cors')
 const app = express()
-//three new lines
-//What is compression and do I need it?
-const compression = require("compression");
-const _app_folder ='dist/application';
+const compression = require('compression');
+const client_app_root = 'dist';
 app.use(compression())
 
 let port = process.env.PORT
@@ -24,10 +22,10 @@ const mailgun = require('mailgun-js')({apiKey: api_key, domain: domain})
 app.use(cors())
 
 // Serve static files (client side stuff)
-app.server.get('*.*', express.static(_app_folder, {?:?}));
+app.get('*.*', express.static(client_app_root));
 //Serve application paths (server side stuff)
 app.all('*', function(req,res) {
-  res.status(200).sendFile('/', {root: _app_folder});
+  res.status(200).sendFile('/', {root: client_app_root});
 });
 
 var transporter = nodemailer.createTransport({
@@ -64,31 +62,5 @@ app.get('/mailgun', function(req, res) {
     }
   })
 })
-
-
-// app.get(route_path, function(req, res) {
-//   var name = req.query.firstName + ' ' + req.query.lastName
-//   var emailAddress = req.query.email
-//   var phone = req.query.phoneNumber
-//   var items = req.query.description
-//   var action = req.query.form_type
-
-//   var mailOptions = {
-//     from: emailAddress,
-//     to: recipient_email_address,
-//     subject: action +  'from ' + name,
-//     text: name + ' is ' + action + 'ing: '  + items + '\n\n' + name +"'s phone number is " + phone + '\n' + name + "'s email address is " + emailAddress
-//   }
-
-//   transporter.sendMail(mailOptions, function(error, info) {
-//     if (error) {
-//       console.log(error)
-//       res.send("SMTP log:" + error.data)
-//     } else {
-//       res.send('Congratulations you little genius. Email sent:' + info.response)
-//     }
-//   })
-// })
-
 
 app.listen(port)
