@@ -7,7 +7,7 @@ const app = express()
 //three new lines
 //What is compression and do I need it?
 const compression = require("compression");
-const _app_folder ='src/app';
+const _app_folder ='dist/application';
 app.use(compression())
 
 let port = process.env.PORT
