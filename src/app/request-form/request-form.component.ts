@@ -20,7 +20,6 @@ export class RequestFormComponent implements OnInit {
   submitted = false;
 
   onSubmit() {
-    // console.log('First Name On Submit: ', this.model.firstName);
     this.submitted = true;
 
     this.messageService.sendMessage(this.model);

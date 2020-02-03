@@ -8,11 +8,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class AppComponent {
   title = 'cofpa-inventory';
-  // readonly ROOT_URL = 'http://localhost:3000/ff792xyp872'
-  // posts: any;
+
   constructor(private http: HttpClient) {}
-  // getPosts() {
-  //   this.posts = this.http.get(this.ROOT_URL)
-  //   alert(this.posts)
-  // }
+
 }
