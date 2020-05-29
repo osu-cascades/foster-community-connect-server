@@ -29,7 +29,9 @@ describe('AppComponent', () => {
   });
 
   /* Commenting out temporarily 
-   * to run other tests
+   * to run other tests and since test appears
+   * to be reproduced and runnable in
+   * e2e/src/app.e2e-spec.ts
   it('should render title in a h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();

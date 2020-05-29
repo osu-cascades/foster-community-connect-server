@@ -26,7 +26,7 @@ describe('RequestFormComponent', () => {
   });
   
   /* Test firstName view-to-model. */
-  it('should update the firstName in the model upon updating it in the input field',
+  it('should update firstName in the model upon updating it in the input field',
     async(() => {
       // Wait for form input values to be initialized as empty from model.
       fixture.detectChanges();
@@ -48,7 +48,7 @@ describe('RequestFormComponent', () => {
   ));
   
   /* Test firstName model-to-view. */
-  it('should update the firstName in the input field upon updating it in the model',
+  it('should update firstName in the input field upon updating it in the model',
     async(() => {
       // Update firstName in the model.
       const newFirstNameValue = 'Joe';
@@ -63,4 +63,122 @@ describe('RequestFormComponent', () => {
       });
     }
   ));
+  
+  it('should update lastName in the model upon updating it in the input field', async(() => {
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      const newLastNameValue = 'Smith';
+      const lastNameInput = fixture.nativeElement.querySelector('#lastName');
+      lastNameInput.value = newLastNameValue;
+      lastNameInput.dispatchEvent(new Event('input'));
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        expect(component.model.lastName).toBe(newLastNameValue);
+      });
+    });
+  }));
+  
+  it('should update lastName in the input field upon updating it in the model', async(() => {
+    const newLastNameValue = 'Smith';
+    component.model.lastName = newLastNameValue;
+    
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      const lastNameField = fixture.nativeElement.querySelector('#lastName');
+      expect(lastNameField.value).toBe(newLastNameValue);
+    });
+  }));
+  
+  it('should update email in the model upon updating it in the input field', async(() => {
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      const newEmailValue = 'joesmith@bogusemail.com';
+      const emailInput = fixture.nativeElement.querySelector('#email');
+      emailInput.value = newEmailValue;
+      emailInput.dispatchEvent(new Event('input'));
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        expect(component.model.email).toBe(newEmailValue);
+      });
+    });
+  }));
+  
+  it('should update email in the input field upon updating it in the model', async(() => {
+    const newEmailValue = 'joesmith@bogusemail.com';
+    component.model.email = newEmailValue;
+    
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      const emailInput = fixture.nativeElement.querySelector('#email');
+      expect(emailInput.value).toBe(newEmailValue)
+    });
+  }));
+  
+  it('should update phoneNumber in the model upon updating it in the input field', async(() => {
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      const newPhoneNumberValue = '555-555-5555';
+      const phoneNumberInput = fixture.nativeElement.querySelector('#phoneNumber');
+      phoneNumberInput.value = newPhoneNumberValue;
+      phoneNumberInput.dispatchEvent(new Event('input'));
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        expect(component.model.phoneNumber).toBe(newPhoneNumberValue);
+      });
+    });
+  }));
+  
+  it('should update phoneNumber in the input field upon updating it in the model', async(() => {
+    const newPhoneNumberValue = '555-555-5555';
+    component.model.phoneNumber = newPhoneNumberValue;
+    
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      const phoneNumberInput = fixture.nativeElement.querySelector('#phoneNumber');
+      expect(phoneNumberInput.value).toBe(newPhoneNumberValue);
+    });
+  }));
+  
+  it('should update description in the component upon updating it in the textarea field', 
+    async(() => {
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        const newDescriptionValue = 'I am requesting toys for children age 6-12.';
+        const descriptionTextarea = fixture.nativeElement.querySelector('#description');
+        descriptionTextarea.value = newDescriptionValue;
+        descriptionTextarea.dispatchEvent(new Event('input'));
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(component.model.description).toBe(newDescriptionValue);
+        });
+      });
+    }
+  ));
+  
+  it('should update the description in the textarea field upon updating it in the model', 
+    async(() => {
+      const newDescriptionValue = 'I am requesting toys for children age 6-12.';
+      component.model.description = newDescriptionValue;
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        const descriptionTextarea = fixture.nativeElement.querySelector('#description');
+        expect(descriptionTextarea.value).toBe(newDescriptionValue);
+      });
+    }
+  ));
+  
+  /* TODO:
+   * Add tests for other fields view-to-model and model-to-view.
+   * Add tests to ensure submit button is diabled when any field is empty.
+   * Add test to ensure form can be submitted when all fields valid.
+   * Add tests to ensure validation messages appear correctly
+     (suspect that they will not due to incorrect div tagging in
+      template).
+   * Add test to ensure invalid email addresses are rejected (look for email invalid message).
+  */
 });
