@@ -172,13 +172,271 @@ describe('RequestFormComponent', () => {
     }
   ));
   
-  /* TODO:
-   * Add tests for other fields view-to-model and model-to-view.
-   * Add tests to ensure submit button is diabled when any field is empty.
-   * Add test to ensure form can be submitted when all fields valid.
-   * Add tests to ensure validation messages appear correctly
-     (suspect that they will not due to incorrect div tagging in
-      template).
-   * Add test to ensure invalid email addresses are rejected (look for email invalid message).
-  */
+  it('should leave submit button disabled if firstName field is empty', async(() => {
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {      
+      const newLastNameValue = 'Smith';
+      const lastNameInput = fixture.nativeElement.querySelector('#lastName');
+      lastNameInput.value = newLastNameValue;
+      lastNameInput.dispatchEvent(new Event('input'));
+      
+      const newEmailValue = 'joesmith@bogusemail.com';
+      const emailInput = fixture.nativeElement.querySelector('#email');
+      emailInput.value = newEmailValue;
+      emailInput.dispatchEvent(new Event('input'));
+      
+      const newPhoneNumberValue = '555-555-5555';
+      const phoneNumberInput = fixture.nativeElement.querySelector('#phoneNumber');
+      phoneNumberInput.value = newPhoneNumberValue;
+      phoneNumberInput.dispatchEvent(new Event('input'));
+      
+      const newDescriptionValue = 'I am requesting toys for children age 6-12.';
+      const descriptionInput = fixture.nativeElement.querySelector('#description');
+      descriptionInput.value = newDescriptionValue;
+      descriptionInput.dispatchEvent(new Event('input'));
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        const submitButton = fixture.nativeElement.querySelector('button.btn-success');
+        expect(submitButton.disabled).toBeTruthy();
+      });
+    });
+  }));
+  
+  it('should leave submit button disabled if lastName field is empty', async(() => {
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {      
+      const newFirstNameValue = 'Joe';
+      const firstNameInput = fixture.nativeElement.querySelector('#firstName');
+      firstNameInput.value = newFirstNameValue;
+      firstNameInput.dispatchEvent(new Event('input'));
+      
+      const newEmailValue = 'joesmith@bogusemail.com';
+      const emailInput = fixture.nativeElement.querySelector('#email');
+      emailInput.value = newEmailValue;
+      emailInput.dispatchEvent(new Event('input'));
+      
+      const newPhoneNumberValue = '555-555-5555';
+      const phoneNumberInput = fixture.nativeElement.querySelector('#phoneNumber');
+      phoneNumberInput.value = newPhoneNumberValue;
+      phoneNumberInput.dispatchEvent(new Event('input'));
+      
+      const newDescriptionValue = 'I am requesting toys for children age 6-12.';
+      const descriptionInput = fixture.nativeElement.querySelector('#description');
+      descriptionInput.value = newDescriptionValue;
+      descriptionInput.dispatchEvent(new Event('input'));
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        const submitButton = fixture.nativeElement.querySelector('button.btn-success');
+        expect(submitButton.disabled).toBeTruthy();
+      });
+    });
+  }));
+  
+  it('should leave submit button disabled if email field is empty', async(() => {
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {      
+      const newFirstNameValue = 'Joe';
+      const firstNameInput = fixture.nativeElement.querySelector('#firstName');
+      firstNameInput.value = newFirstNameValue;
+      firstNameInput.dispatchEvent(new Event('input'));
+      
+      const newLastNameValue = 'Smith';
+      const lastNameInput = fixture.nativeElement.querySelector('#lastName');
+      lastNameInput.value = newLastNameValue;
+      lastNameInput.dispatchEvent(new Event('input'));
+      
+      const newPhoneNumberValue = '555-555-5555';
+      const phoneNumberInput = fixture.nativeElement.querySelector('#phoneNumber');
+      phoneNumberInput.value = newPhoneNumberValue;
+      phoneNumberInput.dispatchEvent(new Event('input'));
+      
+      const newDescriptionValue = 'I am requesting toys for children age 6-12.';
+      const descriptionInput = fixture.nativeElement.querySelector('#description');
+      descriptionInput.value = newDescriptionValue;
+      descriptionInput.dispatchEvent(new Event('input'));
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        const submitButton = fixture.nativeElement.querySelector('button.btn-success');
+        expect(submitButton.disabled).toBeTruthy();
+      });
+    });
+  }));
+  
+  it('should leave submit button disabled if phoneNumber field is empty', async(() => {
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {      
+      const newFirstNameValue = 'Joe';
+      const firstNameInput = fixture.nativeElement.querySelector('#firstName');
+      firstNameInput.value = newFirstNameValue;
+      firstNameInput.dispatchEvent(new Event('input'));
+      
+      const newLastNameValue = 'Smith';
+      const lastNameInput = fixture.nativeElement.querySelector('#lastName');
+      lastNameInput.value = newLastNameValue;
+      lastNameInput.dispatchEvent(new Event('input'));
+      
+      const newEmailValue = 'joesmith@bogusemail.com';
+      const emailInput = fixture.nativeElement.querySelector('#email');
+      emailInput.value = newEmailValue;
+      emailInput.dispatchEvent(new Event('input'));
+      
+      const newDescriptionValue = 'I am requesting toys for children age 6-12.';
+      const descriptionInput = fixture.nativeElement.querySelector('#description');
+      descriptionInput.value = newDescriptionValue;
+      descriptionInput.dispatchEvent(new Event('input'));
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        const submitButton = fixture.nativeElement.querySelector('button.btn-success');
+        expect(submitButton.disabled).toBeTruthy();
+      });
+    });
+  }));
+  
+  it('should leave submit button disabled if description field is empty', async(() => {
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {      
+      const newFirstNameValue = 'Joe';
+      const firstNameInput = fixture.nativeElement.querySelector('#firstName');
+      firstNameInput.value = newFirstNameValue;
+      firstNameInput.dispatchEvent(new Event('input'));
+      
+      const newLastNameValue = 'Smith';
+      const lastNameInput = fixture.nativeElement.querySelector('#lastName');
+      lastNameInput.value = newLastNameValue;
+      lastNameInput.dispatchEvent(new Event('input'));
+      
+      const newEmailValue = 'joesmith@bogusemail.com';
+      const emailInput = fixture.nativeElement.querySelector('#email');
+      emailInput.value = newEmailValue;
+      emailInput.dispatchEvent(new Event('input'));
+      
+      const newPhoneNumberValue = '555-555-5555';
+      const phoneNumberInput = fixture.nativeElement.querySelector('#phoneNumber');
+      phoneNumberInput.value = newPhoneNumberValue;
+      phoneNumberInput.dispatchEvent(new Event('input'));
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        const submitButton = fixture.nativeElement.querySelector('button.btn-success');
+        expect(submitButton.disabled).toBeTruthy();
+      });
+    });
+  }));
+  
+  it('should enable submit button if all fields contain valid values', async(() => {
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {      
+      const newFirstNameValue = 'Joe';
+      const firstNameInput = fixture.nativeElement.querySelector('#firstName');
+      firstNameInput.value = newFirstNameValue;
+      firstNameInput.dispatchEvent(new Event('input'));
+      
+      const newLastNameValue = 'Smith';
+      const lastNameInput = fixture.nativeElement.querySelector('#lastName');
+      lastNameInput.value = newLastNameValue;
+      lastNameInput.dispatchEvent(new Event('input'));
+      
+      const newEmailValue = 'joesmith@bogusemail.com';
+      const emailInput = fixture.nativeElement.querySelector('#email');
+      emailInput.value = newEmailValue;
+      emailInput.dispatchEvent(new Event('input'));
+      
+      const newPhoneNumberValue = '555-555-5555';
+      const phoneNumberInput = fixture.nativeElement.querySelector('#phoneNumber');
+      phoneNumberInput.value = newPhoneNumberValue;
+      phoneNumberInput.dispatchEvent(new Event('input'));
+      
+      const newDescriptionValue = 'I am requesting toys for children age 6-12.';
+      const descriptionInput = fixture.nativeElement.querySelector('#description');
+      descriptionInput.value = newDescriptionValue;
+      descriptionInput.dispatchEvent(new Event('input'));
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        const submitButton = fixture.nativeElement.querySelector('button.btn-success');
+        expect(submitButton.disabled).toBeFalsy();
+      });
+    });
+  }));
+  
+  it('should submit upon submit button click if all fields contain valid values', async(() => {
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {      
+      const newFirstNameValue = 'Joe';
+      const firstNameInput = fixture.nativeElement.querySelector('#firstName');
+      firstNameInput.value = newFirstNameValue;
+      firstNameInput.dispatchEvent(new Event('input'));
+      
+      const newLastNameValue = 'Smith';
+      const lastNameInput = fixture.nativeElement.querySelector('#lastName');
+      lastNameInput.value = newLastNameValue;
+      lastNameInput.dispatchEvent(new Event('input'));
+      
+      const newEmailValue = 'joesmith@bogusemail.com';
+      const emailInput = fixture.nativeElement.querySelector('#email');
+      emailInput.value = newEmailValue;
+      emailInput.dispatchEvent(new Event('input'));
+      
+      const newPhoneNumberValue = '555-555-5555';
+      const phoneNumberInput = fixture.nativeElement.querySelector('#phoneNumber');
+      phoneNumberInput.value = newPhoneNumberValue;
+      phoneNumberInput.dispatchEvent(new Event('input'));
+      
+      const newDescriptionValue = 'I am requesting toys for children age 6-12.';
+      const descriptionInput = fixture.nativeElement.querySelector('#description');
+      descriptionInput.value = newDescriptionValue;
+      descriptionInput.dispatchEvent(new Event('input'));
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        const submitButton = fixture.nativeElement.querySelector('button.btn-success');
+        submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(component.submitted).toBe(true);
+        });
+      });
+    });
+  }));
+  
+  it('should leave submit button disabled if email is in invalid format', async(() => {
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {      
+      const newFirstNameValue = 'Joe';
+      const firstNameInput = fixture.nativeElement.querySelector('#firstName');
+      firstNameInput.value = newFirstNameValue;
+      firstNameInput.dispatchEvent(new Event('input'));
+      
+      const newLastNameValue = 'Smith';
+      const lastNameInput = fixture.nativeElement.querySelector('#lastName');
+      lastNameInput.value = newLastNameValue;
+      lastNameInput.dispatchEvent(new Event('input'));
+      
+      const newEmailValue = 'joesmith';
+      const emailInput = fixture.nativeElement.querySelector('#email');
+      emailInput.value = newEmailValue;
+      emailInput.dispatchEvent(new Event('input'));
+      
+      const newPhoneNumberValue = '555-555-5555';
+      const phoneNumberInput = fixture.nativeElement.querySelector('#phoneNumber');
+      phoneNumberInput.value = newPhoneNumberValue;
+      phoneNumberInput.dispatchEvent(new Event('input'));
+      
+      const newDescriptionValue = 'I am requesting toys for children age 6-12.';
+      const descriptionInput = fixture.nativeElement.querySelector('#description');
+      descriptionInput.value = newDescriptionValue;
+      descriptionInput.dispatchEvent(new Event('input'));
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        const submitButton = fixture.nativeElement.querySelector('button.btn-success');
+        expect(submitButton.disabled).toBeTruthy();
+      });
+    });
+  }));
 });

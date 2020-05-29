@@ -21,7 +21,7 @@ describe('DonationFormComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the donation form', () => {
     expect(component).toBeTruthy();
   });
 });
