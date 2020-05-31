@@ -29,7 +29,6 @@ describe('RequestFormComponent', () => {
   it('should update firstName in the model upon updating it in the input field',
     async(() => {
       // Wait for form input values to be initialized as empty from model.
-      fixture.detectChanges();
       fixture.whenStable().then(() => {
         // Set value of 'firstName' field to 'Joe.'
         const newFirstNameValue = 'Joe';
@@ -65,7 +64,6 @@ describe('RequestFormComponent', () => {
   ));
   
   it('should update lastName in the model upon updating it in the input field', async(() => {
-    fixture.detectChanges();
     fixture.whenStable().then(() => {
       const newLastNameValue = 'Smith';
       const lastNameInput = fixture.nativeElement.querySelector('#lastName');
@@ -91,7 +89,6 @@ describe('RequestFormComponent', () => {
   }));
   
   it('should update email in the model upon updating it in the input field', async(() => {
-    fixture.detectChanges();
     fixture.whenStable().then(() => {
       const newEmailValue = 'joesmith@bogusemail.com';
       const emailInput = fixture.nativeElement.querySelector('#email');
@@ -117,7 +114,6 @@ describe('RequestFormComponent', () => {
   }));
   
   it('should update phoneNumber in the model upon updating it in the input field', async(() => {
-    fixture.detectChanges();
     fixture.whenStable().then(() => {
       const newPhoneNumberValue = '555-555-5555';
       const phoneNumberInput = fixture.nativeElement.querySelector('#phoneNumber');
@@ -144,7 +140,6 @@ describe('RequestFormComponent', () => {
   
   it('should update description in the component upon updating it in the textarea field', 
     async(() => {
-      fixture.detectChanges();
       fixture.whenStable().then(() => {
         const newDescriptionValue = 'I am requesting toys for children age 6-12.';
         const descriptionTextarea = fixture.nativeElement.querySelector('#description');
@@ -173,7 +168,6 @@ describe('RequestFormComponent', () => {
   ));
   
   it('should leave submit button disabled if firstName field is empty', async(() => {
-    fixture.detectChanges();
     fixture.whenStable().then(() => {      
       const newLastNameValue = 'Smith';
       const lastNameInput = fixture.nativeElement.querySelector('#lastName');
@@ -204,7 +198,6 @@ describe('RequestFormComponent', () => {
   }));
   
   it('should leave submit button disabled if lastName field is empty', async(() => {
-    fixture.detectChanges();
     fixture.whenStable().then(() => {      
       const newFirstNameValue = 'Joe';
       const firstNameInput = fixture.nativeElement.querySelector('#firstName');
@@ -235,7 +228,6 @@ describe('RequestFormComponent', () => {
   }));
   
   it('should leave submit button disabled if email field is empty', async(() => {
-    fixture.detectChanges();
     fixture.whenStable().then(() => {      
       const newFirstNameValue = 'Joe';
       const firstNameInput = fixture.nativeElement.querySelector('#firstName');
@@ -266,7 +258,6 @@ describe('RequestFormComponent', () => {
   }));
   
   it('should leave submit button disabled if phoneNumber field is empty', async(() => {
-    fixture.detectChanges();
     fixture.whenStable().then(() => {      
       const newFirstNameValue = 'Joe';
       const firstNameInput = fixture.nativeElement.querySelector('#firstName');
@@ -297,7 +288,6 @@ describe('RequestFormComponent', () => {
   }));
   
   it('should leave submit button disabled if description field is empty', async(() => {
-    fixture.detectChanges();
     fixture.whenStable().then(() => {      
       const newFirstNameValue = 'Joe';
       const firstNameInput = fixture.nativeElement.querySelector('#firstName');
@@ -328,7 +318,6 @@ describe('RequestFormComponent', () => {
   }));
   
   it('should enable submit button if all fields contain valid values', async(() => {
-    fixture.detectChanges();
     fixture.whenStable().then(() => {      
       const newFirstNameValue = 'Joe';
       const firstNameInput = fixture.nativeElement.querySelector('#firstName');
@@ -364,7 +353,6 @@ describe('RequestFormComponent', () => {
   }));
   
   it('should submit upon submit button click if all fields contain valid values', async(() => {
-    fixture.detectChanges();
     fixture.whenStable().then(() => {      
       const newFirstNameValue = 'Joe';
       const firstNameInput = fixture.nativeElement.querySelector('#firstName');
