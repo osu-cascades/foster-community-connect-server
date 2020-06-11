@@ -56,22 +56,22 @@
       </form>
     </div>
     <div id="confirmationScreen" [hidden]="!submitted">
-      <h2 class="text-success">{{model.firstName}} your request has been submitted.</h2>
+      <h2 id="successMsg" class="text-success">{{model.firstName}} your request has been submitted.</h2>
       <div class="row">
         <div class="col-xs-3 font-weight-bold mt-4">Name: </div>
-        <div class="col-xs-9 mt-4 ml-1"> {{ model.firstName }} {{ model.lastName }}</div>
+        <div id="nameConf" class="col-xs-9 mt-4 ml-1"> {{ model.firstName }} {{ model.lastName }}</div>
       </div>
       <div class="row">
         <div class="col-xs-3 font-weight-bold mt-2">Phone Number: </div>
-        <div class="col-xs-9 mt-2 ml-1"> {{ model.phoneNumber }}</div>
+        <div id="phoneNumberConf" class="col-xs-9 mt-2 ml-1"> {{ model.phoneNumber }}</div>
       </div>
       <div class="row">
         <div class="col-xs-3 font-weight-bold mt-2">Email Address: </div>
-        <div class="col-xs-9 mt-2 ml-1"> {{ model.email }}</div>
+        <div id="emailConf" class="col-xs-9 mt-2 ml-1"> {{ model.email }}</div>
       </div>
       <div class="row">
         <div class="col-xs-3 font-weight-bold mt-2 mb-2">Item's to Donate: </div>
-        <div class="col-xs-9 mt-2 ml-1"> {{ model.description }}</div>
+        <div id="descriptionConf" class="col-xs-9 mt-2 ml-1"> {{ model.description }}</div>
       </div>
       <h4 class="text-success mt-4">A volunteer from Central Oregon Foster Parents Association will be contacting you soon to arrange a drop-off/pick-up time for the item(s) you are donating.</h4>
       <br>

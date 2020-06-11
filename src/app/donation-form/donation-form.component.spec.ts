@@ -69,7 +69,7 @@ class FormHTMLTags {
     this.nameConfMsg = testFixture.nativeElement.querySelector('#nameConf');
     this.emailConfMsg = testFixture.nativeElement.querySelector('#emailConf');
     this.phoneNumberConfMsg = testFixture.nativeElement.querySelector('#phoneNumberConf');
-    this.descriptionConfMsg = testFixture.nativeElement.querySelector('#descriptionConfMsg');
+    this.descriptionConfMsg = testFixture.nativeElement.querySelector('#descriptionConf');
   }
   
   updateInputField(inputField: any, newValue: string): void {
@@ -115,6 +115,30 @@ describe('DonationFormComponent', () => {
     expect(component).toBeTruthy();
   });
   
+  it('should have component.submitted set to false upon form creation', async(() => {
+    fixture.whenStable().then(() => {
+      expect(component.submitted).toBe(false);
+    });
+  }));
+  
+  it('should have model.form_type set to \'Donation\' upon form creation', async(() => {
+    fixture.whenStable().then(() => {
+      expect(component.model.form_type).toBe('Donation');
+    });
+  }));
+  
+  it('should display the inputScreenDiv upon form creation', async(() => {
+    fixture.whenStable().then(() => {
+      expect(formTags.inputScreenDiv.hidden).toBe(false);
+    });
+  }));
+  
+  it('should hide the confirmationScreenDiv upon form creation', async(() => {
+    fixture.whenStable().then(() => {
+      expect(formTags.confirmationScreenDiv.hidden).toBe(true);
+    });
+  }));
+  
   /* Test firstName view-to-model. */
   it('should update firstName in the model upon updating it in the input field',
     async(() => {
@@ -157,14 +181,14 @@ describe('DonationFormComponent', () => {
       
       fixture.detectChanges();
       fixture.whenStable().then(() => {
-        expect(formTags.submitButton.disabled).toBeTruthy();
+        expect(formTags.submitButton.disabled).toBe(true);
       });
     });
   }));
   
   it('should hide firstNameInvalidMsg before user edits firstName field', async(() => {
     fixture.whenStable().then(() => {
-      expect(formTags.firstNameInvalidMsg.hidden).toBeTruthy();
+      expect(formTags.firstNameInvalidMsg.hidden).toBe(true);
     });
   }));
   
@@ -178,7 +202,7 @@ describe('DonationFormComponent', () => {
         
         fixture.detectChanges();
         fixture.whenStable().then(() => {
-          expect(formTags.firstNameInvalidMsg.hidden).toBeFalsy();
+          expect(formTags.firstNameInvalidMsg.hidden).toBe(false);
         });
       });
     });
@@ -190,7 +214,7 @@ describe('DonationFormComponent', () => {
       
       fixture.detectChanges();
       fixture.whenStable().then(() => {
-        expect(formTags.firstNameInvalidMsg.hidden).toBeTruthy();
+        expect(formTags.firstNameInvalidMsg.hidden).toBe(true);
       });
     });
   }));
@@ -224,14 +248,14 @@ describe('DonationFormComponent', () => {
       
       fixture.detectChanges();
       fixture.whenStable().then(() => {
-        expect(formTags.submitButton.disabled).toBeTruthy();
+        expect(formTags.submitButton.disabled).toBe(true);
       });
     });
   }));
 
   it('should hide lastNameInvalidMsg before user edits lastName field', async(() => {
     fixture.whenStable().then(() => {
-      expect(formTags.lastNameInvalidMsg.hidden).toBeTruthy();
+      expect(formTags.lastNameInvalidMsg.hidden).toBe(true);
     });
   }));
   
@@ -245,7 +269,7 @@ describe('DonationFormComponent', () => {
         
         fixture.detectChanges();
         fixture.whenStable().then(() => {
-          expect(formTags.lastNameInvalidMsg.hidden).toBeFalsy();
+          expect(formTags.lastNameInvalidMsg.hidden).toBe(false);
         });
       });
     });
@@ -257,7 +281,7 @@ describe('DonationFormComponent', () => {
       
       fixture.detectChanges();
       fixture.whenStable().then(() => {
-        expect(formTags.lastNameInvalidMsg.hidden).toBeTruthy();
+        expect(formTags.lastNameInvalidMsg.hidden).toBe(true);
       });
     });
   }));
@@ -291,7 +315,7 @@ describe('DonationFormComponent', () => {
       
       fixture.detectChanges();
       fixture.whenStable().then(() => {
-        expect(formTags.submitButton.disabled).toBeTruthy();
+        expect(formTags.submitButton.disabled).toBe(true);
       });
     });
   }));
@@ -307,14 +331,14 @@ describe('DonationFormComponent', () => {
       
       fixture.detectChanges();
       fixture.whenStable().then(() => {
-        expect(formTags.submitButton.disabled).toBeTruthy();
+        expect(formTags.submitButton.disabled).toBe(true);
       });
     });
   }));
   
   it('should hide emailInvalidMsg before user edits email field', async(() => {
     fixture.whenStable().then(() => {
-      expect(formTags.emailInvalidMsg.hidden).toBeTruthy();
+      expect(formTags.emailInvalidMsg.hidden).toBe(true);
     });
   }));
   
@@ -328,7 +352,7 @@ describe('DonationFormComponent', () => {
         
         fixture.detectChanges();
         fixture.whenStable().then(() => {
-          expect(formTags.emailInvalidMsg.hidden).toBeFalsy();
+          expect(formTags.emailInvalidMsg.hidden).toBe(false);
         });
       });
     });
@@ -340,7 +364,7 @@ describe('DonationFormComponent', () => {
       
       fixture.detectChanges();
       fixture.whenStable().then(() => {
-        expect(formTags.emailInvalidMsg.hidden).toBeFalsy();
+        expect(formTags.emailInvalidMsg.hidden).toBe(false);
       });
     });
   }));
@@ -351,7 +375,7 @@ describe('DonationFormComponent', () => {
       
       fixture.detectChanges();
       fixture.whenStable().then(() => {
-        expect(formTags.emailInvalidMsg.hidden).toBeTruthy();
+        expect(formTags.emailInvalidMsg.hidden).toBe(true);
       });
     });
   }));
@@ -385,14 +409,14 @@ describe('DonationFormComponent', () => {
       
       fixture.detectChanges();
       fixture.whenStable().then(() => {
-        expect(formTags.submitButton.disabled).toBeTruthy();
+        expect(formTags.submitButton.disabled).toBe(true);
       });
     });
   }));
 
   it('should hide phoneNumberInvalidMsg before user edits phoneNumber field', async(() => {
     fixture.whenStable().then(() => {
-      expect(formTags.phoneNumberInvalidMsg.hidden).toBeTruthy();
+      expect(formTags.phoneNumberInvalidMsg.hidden).toBe(true);
     });
   }));
   
@@ -406,7 +430,7 @@ describe('DonationFormComponent', () => {
         
         fixture.detectChanges();
         fixture.whenStable().then(() => {
-          expect(formTags.phoneNumberInvalidMsg.hidden).toBeFalsy();
+          expect(formTags.phoneNumberInvalidMsg.hidden).toBe(false);
         });
       });
     });
@@ -418,7 +442,7 @@ describe('DonationFormComponent', () => {
       
       fixture.detectChanges();
       fixture.whenStable().then(() => {
-        expect(formTags.phoneNumberInvalidMsg.hidden).toBeTruthy();
+        expect(formTags.phoneNumberInvalidMsg.hidden).toBe(true);
       });
     });
   }));
@@ -456,14 +480,14 @@ describe('DonationFormComponent', () => {
       
       fixture.detectChanges();
       fixture.whenStable().then(() => {
-        expect(formTags.submitButton.disabled).toBeTruthy();
+        expect(formTags.submitButton.disabled).toBe(true);
       });
     });
   }));
 
   it('should hide descriptionInvalidMsg before user edits description field', async(() => {
     fixture.whenStable().then(() => {
-      expect(formTags.descriptionInvalidMsg.hidden).toBeTruthy();
+      expect(formTags.descriptionInvalidMsg.hidden).toBe(true);
     });
   }));
   
@@ -477,7 +501,7 @@ describe('DonationFormComponent', () => {
         
         fixture.detectChanges();
         fixture.whenStable().then(() => {
-          expect(formTags.descriptionInvalidMsg.hidden).toBeFalsy();
+          expect(formTags.descriptionInvalidMsg.hidden).toBe(false);
         });
       });
     });
@@ -489,7 +513,267 @@ describe('DonationFormComponent', () => {
       
       fixture.detectChanges();
       fixture.whenStable().then(() => {
-        expect(formTags.descriptionInvalidMsg.hidden).toBeTruthy();
+        expect(formTags.descriptionInvalidMsg.hidden).toBe(true);
+      });
+    });
+  }));
+  
+  it('should not submit upon submit button click if any field is invalid', async(() => {
+    fixture.whenStable().then(() => {
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleInvalidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(component.submitted).toBe(false);
+        });
+      });
+    });
+  }));
+  
+  it('should continue to display inputScreenDiv upon submit button click if any field is invalid', async(() => {
+    fixture.whenStable().then(() => {
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleInvalidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(formTags.inputScreenDiv.hidden).toBe(false);
+        });
+      });
+    });
+  }));
+  
+  it('should continue to hide confirmationScreenDiv upon submit button click if any field is invalid', async(() => {
+    fixture.whenStable().then(() => {
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleInvalidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(formTags.confirmationScreenDiv.hidden).toBe(true);
+        });
+      });
+    });
+  }));
+  
+  it('should still display user-entered value for firstNameInput in inputScreenDiv upon submit button click if any field is invalid', async(() => {
+    fixture.whenStable().then(() => {
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleInvalidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(formTags.firstNameInput.value).toBe(sampleFirstNameValue);
+        });
+      });
+    });
+  }));
+  
+  it('should still contain user-entered value for firstNameInput in model upon submit button click if any field is invalid', async(() => {
+    fixture.whenStable().then(() => {
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleInvalidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(component.model.firstName).toBe(sampleFirstNameValue);
+        });
+      });
+    });
+  }));
+  
+  it('should still display user-entered value for lastNameInput in inputScreenDiv upon submit button click if any field is invalid', async(() => {
+    fixture.whenStable().then(() => {
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleInvalidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(formTags.lastNameInput.value).toBe(sampleLastNameValue);
+        });
+      });
+    });
+  }));
+  
+  it('should still contain user-entered value for lastNameInput in model upon submit button click if any field is invalid', async(() => {
+    fixture.whenStable().then(() => {
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleInvalidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(component.model.lastName).toBe(sampleLastNameValue);
+        });
+      });
+    });
+  }));
+  
+  it('should still display user-entered value for emailInput in inputScreenDiv upon submit button click if any field is invalid', async(() => {
+    fixture.whenStable().then(() => {
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleInvalidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(formTags.emailInput.value).toBe(sampleInvalidEmailValue);
+        });
+      });
+    });
+  }));
+  
+  it('should still contain user-entered value for emailInput in model upon submit button click if any field is invalid', async(() => {
+    fixture.whenStable().then(() => {
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleInvalidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(component.model.email).toBe(sampleInvalidEmailValue);
+        });
+      });
+    });
+  }));
+  
+  it('should still display user-entered value for phoneNumberInput in inputScreenDiv upon submit button click if any field is invalid', async(() => {
+    fixture.whenStable().then(() => {
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleInvalidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(formTags.phoneNumberInput.value).toBe(samplePhoneNumberValue);
+        });
+      });
+    });
+  }));
+  
+  it('should still contain user-entered value for phoneNumberInput in model upon submit button click if any field is invalid', async(() => {
+    fixture.whenStable().then(() => {
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleInvalidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(component.model.phoneNumber).toBe(samplePhoneNumberValue);
+        });
+      });
+    });
+  }));
+  
+  it('should still display user-entered value for descriptionInput in inputScreenDiv upon submit button click if any field is invalid', async(() => {
+    fixture.whenStable().then(() => {
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleInvalidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(formTags.descriptionInput.value).toBe(sampleDescriptionValue);
+        });
+      });
+    });
+  }));
+  
+  it('should still contain user-entered value for descriptionInput in model upon submit button click if any field is invalid', async(() => {
+    fixture.whenStable().then(() => {
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleInvalidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(component.model.description).toBe(sampleDescriptionValue);
+        });
       });
     });
   }));
@@ -504,11 +788,11 @@ describe('DonationFormComponent', () => {
       
       fixture.detectChanges();
       fixture.whenStable().then(() => {
-        expect(formTags.submitButton.disabled).toBeFalsy();
+        expect(formTags.submitButton.disabled).toBe(false);
       });
     });
   }));
-  
+
   it('should submit upon submit button click if all fields contain valid values', async(() => {
     fixture.whenStable().then(() => {      
       formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
@@ -528,5 +812,591 @@ describe('DonationFormComponent', () => {
       });
     });
   }));
+  
+  it('should hide inputScreenDiv upon successful form submission', async(() => {
+    fixture.whenStable().then(() => {      
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleValidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(formTags.inputScreenDiv.hidden).toBe(true);
+        });
+      });
+    });
+  }));
+  
+  it('should display confirmationScreenDiv upon successful form submission', async(() => {
+    fixture.whenStable().then(() => {      
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleValidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(formTags.confirmationScreenDiv.hidden).toBe(false);
+        });
+      });
+    });
+  }));
+  
+  it('should display user-entered firstName in successMsg upon successful form submission', async(() => {
+    fixture.whenStable().then(() => {      
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleValidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(formTags.successMsg.innerHTML.includes(sampleFirstNameValue)).toBe(true);
+        });
+      });
+    });
+  }));
+  
+  it('should display user-entered firstName in nameConf upon successful form submission', async(() => {
+    fixture.whenStable().then(() => {      
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleValidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(formTags.nameConfMsg.innerHTML.includes(sampleFirstNameValue)).toBe(true);
+        });
+      });
+    });
+  }));
+  
+  it('should still contain user-entered firstName in the model upon successful form submission', async(() => {
+    fixture.whenStable().then(() => {      
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleValidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(component.model.firstName).toBe(sampleFirstNameValue);
+        });
+      });
+    });
+  }));
+  
+  it('should display user-entered lastName in nameConf upon successful form submission', async(() => {
+    fixture.whenStable().then(() => {      
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleValidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(formTags.nameConfMsg.innerHTML.includes(sampleLastNameValue)).toBe(true);
+        });
+      });
+    });
+  }));
+  
+  it('should still contain user-entered lastName in the model upon successful form submission', async(() => {
+    fixture.whenStable().then(() => {      
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleValidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(component.model.lastName).toBe(sampleLastNameValue);
+        });
+      });
+    });
+  }));
+  
+  it('should display user-entered email in emailConf upon successful form submission', async(() => {
+    fixture.whenStable().then(() => {      
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleValidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(formTags.emailConfMsg.innerHTML.includes(sampleValidEmailValue)).toBe(true);
+        });
+      });
+    });
+  }));
+  
+  it('should still contain user-entered email in the model upon successful form submission', async(() => {
+    fixture.whenStable().then(() => {      
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleValidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(component.model.email).toBe(sampleValidEmailValue);
+        });
+      });
+    });
+  }));
+  
+  it('should display user-entered phoneNumber in phoneNumberConf upon successful form submission', async(() => {
+    fixture.whenStable().then(() => {      
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleValidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(formTags.phoneNumberConfMsg.innerHTML.includes(samplePhoneNumberValue))
+            .toBe(true);
+        });
+      });
+    });
+  }));
+  
+  it('should still contain user-entered phoneNumber in the model upon successful form submission', async(() => {
+    fixture.whenStable().then(() => {      
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleValidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(component.model.phoneNumber).toBe(samplePhoneNumberValue);
+        });
+      });
+    });
+  }));
+  
+  it('should display user-entered description in descriptionConf upon successful form submission', async(() => {
+    fixture.whenStable().then(() => {      
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleValidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(formTags.descriptionConfMsg.innerHTML.includes(sampleDescriptionValue))
+            .toBe(true);
+        });
+      });
+    });
+  }));
+  
+  it('should still contain user-entered description in the model upon successful form submission', async(() => {
+    fixture.whenStable().then(() => {      
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleValidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          expect(component.model.description).toBe(sampleDescriptionValue);
+        });
+      });
+    });
+  }));
+  
+  it('should reset component.submitted to false upon editButton click', async(() => {
+    fixture.whenStable().then(() => {      
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleValidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          formTags.editButton.click();
+          
+          fixture.detectChanges();
+          fixture.whenStable().then(() => {
+            expect(component.submitted).toBe(false);
+          });
+        });
+      });
+    });
+  }));
+  
+  it('should show inputScreenDiv upon editButton click', async(() => {
+    fixture.whenStable().then(() => {      
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleValidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          formTags.editButton.click();
+          
+          fixture.detectChanges();
+          fixture.whenStable().then(() => {
+            expect(formTags.inputScreenDiv.hidden).toBe(false);
+          });
+        });
+      });
+    });
+  }));
+  
+  it('should hide confirmationScreenDiv upon editButton click', async(() => {
+    fixture.whenStable().then(() => {      
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleValidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          formTags.editButton.click();
+          
+          fixture.detectChanges();
+          fixture.whenStable().then(() => {
+            expect(formTags.confirmationScreenDiv.hidden).toBe(true);
+          });
+        });
+      });
+    });
+  }));
+  
+  it('should display user-entered firstName in firstNameInput field upon editButton click', async(() => {
+    fixture.whenStable().then(() => {      
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleValidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          formTags.editButton.click();
+          
+          fixture.detectChanges();
+          fixture.whenStable().then(() => {
+            expect(formTags.firstNameInput.value).toBe(sampleFirstNameValue);
+          });
+        });
+      });
+    });
+  }));
+  
+  it('should contain user-entered firstName in model upon editButton click', async(() => {
+    fixture.whenStable().then(() => {      
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleValidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          formTags.editButton.click();
+          
+          fixture.detectChanges();
+          fixture.whenStable().then(() => {
+            expect(component.model.firstName).toBe(sampleFirstNameValue);
+          });
+        });
+      });
+    });
+  }));
+  
+  it('should display user-entered lastName in lastNameInput field upon editButton click', async(() => {
+    fixture.whenStable().then(() => {      
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleValidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          formTags.editButton.click();
+          
+          fixture.detectChanges();
+          fixture.whenStable().then(() => {
+            expect(formTags.lastNameInput.value).toBe(sampleLastNameValue);
+          });
+        });
+      });
+    });
+  }));
+  
+  it('should contain user-entered lastName in model upon editButton click', async(() => {
+    fixture.whenStable().then(() => {      
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleValidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          formTags.editButton.click();
+          
+          fixture.detectChanges();
+          fixture.whenStable().then(() => {
+            expect(component.model.lastName).toBe(sampleLastNameValue);
+          });
+        });
+      });
+    });
+  }));
+  
+  it('should display user-entered email in emailInput field upon editButton click', async(() => {
+    fixture.whenStable().then(() => {      
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleValidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          formTags.editButton.click();
+          
+          fixture.detectChanges();
+          fixture.whenStable().then(() => {
+            expect(formTags.emailInput.value).toBe(sampleValidEmailValue);
+          });
+        });
+      });
+    });
+  }));
+  
+  it('should contain user-entered email in model upon editButton click', async(() => {
+    fixture.whenStable().then(() => {      
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleValidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          formTags.editButton.click();
+          
+          fixture.detectChanges();
+          fixture.whenStable().then(() => {
+            expect(component.model.email).toBe(sampleValidEmailValue);
+          });
+        });
+      });
+    });
+  }));
+  
+  it('should display user-entered phoneNumber in phoneNumberInput field upon editButton click', async(() => {
+    fixture.whenStable().then(() => {      
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleValidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          formTags.editButton.click();
+          
+          fixture.detectChanges();
+          fixture.whenStable().then(() => {
+            expect(formTags.phoneNumberInput.value).toBe(samplePhoneNumberValue);
+          });
+        });
+      });
+    });
+  }));
+  
+  it('should contain user-entered phoneNumber in model upon editButton click', async(() => {
+    fixture.whenStable().then(() => {      
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleValidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          formTags.editButton.click();
+          
+          fixture.detectChanges();
+          fixture.whenStable().then(() => {
+            expect(component.model.phoneNumber).toBe(samplePhoneNumberValue);
+          });
+        });
+      });
+    });
+  }));
+  
+  it('should display user-entered description in descriptionInput field upon editButton click', async(() => {
+    fixture.whenStable().then(() => {      
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleValidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          formTags.editButton.click();
+          
+          fixture.detectChanges();
+          fixture.whenStable().then(() => {
+            expect(formTags.descriptionInput.value).toBe(sampleDescriptionValue);
+          });
+        });
+      });
+    });
+  }));
+  
+  it('should contain user-entered description in model upon editButton click', async(() => {
+    fixture.whenStable().then(() => {      
+      formTags.updateInputField(formTags.firstNameInput, sampleFirstNameValue);
+      formTags.updateInputField(formTags.lastNameInput, sampleLastNameValue);
+      formTags.updateInputField(formTags.emailInput, sampleValidEmailValue);
+      formTags.updateInputField(formTags.phoneNumberInput, samplePhoneNumberValue);
+      formTags.updateInputField(formTags.descriptionInput, sampleDescriptionValue);
+      
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        formTags.submitButton.click();
+        
+        fixture.detectChanges();
+        fixture.whenStable().then(() => {
+          formTags.editButton.click();
+          
+          fixture.detectChanges();
+          fixture.whenStable().then(() => {
+            expect(component.model.description).toBe(sampleDescriptionValue);
+          });
+        });
+      });
+    });
+  }));
 });
-
