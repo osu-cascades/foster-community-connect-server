@@ -5,6 +5,6 @@ export class DonationForm {
         public email: string,
         public phoneNumber: string,
         public description: string,
-        public form_type: string
+        readonly form_type: string
       ) {  }
 }
